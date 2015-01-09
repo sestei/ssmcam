@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'uicameras.ui'
 #
-# Created: Fri Jan 09 15:35:19 2015
+# Created: Fri Jan 09 16:09:30 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -47,6 +47,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam1.sizePolicy().hasHeightForWidth())
         self.pbCam1.setSizePolicy(sizePolicy)
+        self.pbCam1.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam1.setFont(font)
@@ -69,6 +70,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam2.sizePolicy().hasHeightForWidth())
         self.pbCam2.setSizePolicy(sizePolicy)
+        self.pbCam2.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam2.setFont(font)
@@ -91,6 +93,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam3.sizePolicy().hasHeightForWidth())
         self.pbCam3.setSizePolicy(sizePolicy)
+        self.pbCam3.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam3.setFont(font)
@@ -113,6 +116,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam4.sizePolicy().hasHeightForWidth())
         self.pbCam4.setSizePolicy(sizePolicy)
+        self.pbCam4.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam4.setFont(font)
@@ -135,6 +139,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam5.sizePolicy().hasHeightForWidth())
         self.pbCam5.setSizePolicy(sizePolicy)
+        self.pbCam5.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam5.setFont(font)
@@ -157,6 +162,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam6.sizePolicy().hasHeightForWidth())
         self.pbCam6.setSizePolicy(sizePolicy)
+        self.pbCam6.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam6.setFont(font)
@@ -179,6 +185,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam7.sizePolicy().hasHeightForWidth())
         self.pbCam7.setSizePolicy(sizePolicy)
+        self.pbCam7.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam7.setFont(font)
@@ -201,6 +208,7 @@ class Ui_CamDialog(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pbCam8.sizePolicy().hasHeightForWidth())
         self.pbCam8.setSizePolicy(sizePolicy)
+        self.pbCam8.setMaximumSize(QtCore.QSize(40, 27))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam8.setFont(font)
