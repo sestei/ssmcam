@@ -14,7 +14,7 @@ class Config(object):
             'Camera 7',
             'Camera 8'
         ]
-        self.enabled = [True] * 8
+        self.enabled = [False] * 8
         self.loadFromFile()
 
     def loadFromFile(self):
