@@ -25,10 +25,16 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
         for ii in range(0,8):
             self.config.descriptions[ii] = self.getCamDescription(ii+1)
 
+            handle = getattr(self,'chkCam{0}'.format(ii+1))
+            self.config.enabled[ii] = handle.isChecked()
+
     def updateFromConfig(self):
         for ii in range(0,8):
             handle = getattr(self,'txtDesc{0}'.format(ii+1))
             handle.setText(self.config.descriptions[ii])
+
+            handle = getattr(self,'chkCam{0}'.format(ii+1))
+            handle.setChecked(self.config.enabled[ii])
 
     # ==== SLOTS ====
 

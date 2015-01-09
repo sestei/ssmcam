@@ -14,6 +14,7 @@ class Config(object):
             'Camera 7',
             'Camera 8'
         ]
+        self.enabled = [True] * 8
         self.loadFromFile()
 
     def loadFromFile(self):
@@ -21,6 +22,7 @@ class Config(object):
             fc = yaml.load(file('camconfig.yaml','r'))
             self.action_cmd = fc['action_cmd']
             self.descriptions = fc['descriptions']
+            self.enabled = fc['enabled']
         except Exception, e:
             print("Error while reading configuration: {0}".format(str(e)))
 
@@ -29,7 +31,8 @@ class Config(object):
             with file('camconfig.yaml', 'w') as fc:
                 yaml.dump({
                     'action_cmd': self.action_cmd,
-                    'descriptions': self.descriptions
+                    'descriptions': self.descriptions,
+                    'enabled': self.enabled
                     }, fc)
         except Exception, e:
             print("Error while saving configuration: {0}".format(str(e)))  
