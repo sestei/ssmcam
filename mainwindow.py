@@ -13,13 +13,17 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
         self.updateFromConfig()
 
     def activateCamera(self, idCam):
-        print("activating camera #{0}.".format(idCam))
-        subprocess.call(self.config.action_cmd.format(idCam), shell=True)
+        textCam = self.getCamDescription(idCam)
+        cmd = self.config.action_cmd.format(idCam, textCam)
+        subprocess.Popen(cmd, shell=True)
+
+    def getCamDescription(self, idCam):
+        handle = getattr(self,'txtDesc{0}'.format(idCam))
+        return str(handle.text())
 
     def updateConfig(self):
         for ii in range(0,8):
-            handle = getattr(self,'txtDesc{0}'.format(ii+1))
-            self.config.descriptions[ii] = str(handle.text())
+            self.config.descriptions[ii] = self.getCamDescription(ii+1)
 
     def updateFromConfig(self):
         for ii in range(0,8):

@@ -3,7 +3,7 @@ import yaml
 
 class Config(object):
     def __init__(self):
-        self.action_cmd = 'show_camera.sh {0}'
+        self.action_cmd = './show_camera.sh {0} "{1}"'
         self.descriptions = [
             'Camera 1',
             'Camera 2',
