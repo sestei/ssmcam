@@ -15,12 +15,23 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
         self.updateFromConfig()
         self.cmdRecHandles = [None] * 8
         self.cmdViewHandles = [None] * 8
+        self.tmrCleanUp = QtCore.QTimer(self)
+        self.tmrCleanUp.timeout.connect(self.cleanUpEvent)
+        self.tmrCleanUp.start(1000)
 
-    def activateCamera(self, idCam):
-        textCam = self.getCamDescription(idCam)
-        cmd = self.config.action_cmd.format(idCam, textCam)
-        cmd = shlex.split(cmd)
-        self.cmdViewHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
+
+    def viewCamera(self, idCam, startView):
+        if startView:
+            textCam = self.getCamDescription(idCam)
+            cmd = self.config.view_cmd.format(idCam, textCam)
+            cmd = shlex.split(cmd)
+            self.cmdViewHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
+        else:
+            handle = self.cmdViewHandles[idCam-1]
+            if handle:
+                handle.terminate()
+            self.cmdViewHandles[idCam-1] = None
+            
 
     def recordCamera(self, idCam, startRecording):
         if startRecording:
@@ -36,11 +47,9 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
             self.cmdRecHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
         else:
             handle = self.cmdRecHandles[idCam-1]
-            if not handle:
-                print "No handle found?!"
-                return
-            print "sending terminate"
-            handle.terminate()
+            if handle:
+                handle.terminate()
+            self.cmdRecHandles[idCam-1] = None
 
     def getCamDescription(self, idCam):
         handle = getattr(self,'txtDesc{0}'.format(idCam))
@@ -68,37 +77,54 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
         self.config.saveToFile()
         super(MainWindow,self).closeEvent(ev)
 
+    def cleanUpEvent(self):
+        """
+        checks for terminated child processes and resets respective buttons
+        """
+        for ii, handle in enumerate(self.cmdRecHandles):
+            if handle and handle.poll() is not None:
+                print "Recording process for camera {0} has terminated".format(ii+1)
+                pb = getattr(self,'pbRecord{0}'.format(ii+1))
+                pb.setChecked(False)
+                self.cmdRecHandles[ii] = None
+        for ii, handle in enumerate(self.cmdViewHandles):
+            if handle and handle.poll() is not None:
+                print "Live view process for camera {0} has terminated".format(ii+1)
+                pb = getattr(self,'pbCam{0}'.format(ii+1))
+                pb.setChecked(False)
+                self.cmdViewHandles[ii] = None
+
     @QtCore.pyqtSlot()
     def on_pbCam1_clicked(self):
-        self.activateCamera(1)
+        self.viewCamera(1, self.pbCam1.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam2_clicked(self):
-        self.activateCamera(2)
+        self.viewCamera(2, self.pbCam2.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam3_clicked(self):
-        self.activateCamera(3)
+        self.viewCamera(3, self.pbCam3.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam4_clicked(self):
-        self.activateCamera(4)
+        self.viewCamera(4, self.pbCam4.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam5_clicked(self):
-        self.activateCamera(5)
+        self.viewCamera(5, self.pbCam5.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam6_clicked(self):
-        self.activateCamera(6)
+        self.viewCamera(6, self.pbCam6.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam7_clicked(self):
-        self.activateCamera(7)
+        self.viewCamera(7, self.pbCam7.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbCam8_clicked(self):
-        self.activateCamera(8)
+        self.viewCamera(8, self.pbCam8.isChecked())
 
     @QtCore.pyqtSlot()
     def on_pbRecord1_clicked(self):

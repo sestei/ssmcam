@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'uicameras.ui'
 #
-# Created: Tue Jan 13 22:54:22 2015
+# Created: Wed Jan 14 20:59:15 2015
 #      by: PyQt4 UI code generator 4.9.6
 #
 # WARNING! All changes made in this file will be lost!
@@ -51,6 +51,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam1.setFont(font)
+        self.pbCam1.setCheckable(True)
         self.pbCam1.setObjectName(_fromUtf8("pbCam1"))
         self.gridLayout.addWidget(self.pbCam1, 0, 1, 1, 1)
         self.txtDesc1 = QtGui.QLineEdit(self.groupBox)
@@ -80,6 +81,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam2.setFont(font)
+        self.pbCam2.setCheckable(True)
         self.pbCam2.setObjectName(_fromUtf8("pbCam2"))
         self.gridLayout.addWidget(self.pbCam2, 1, 1, 1, 1)
         self.txtDesc2 = QtGui.QLineEdit(self.groupBox)
@@ -109,6 +111,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam3.setFont(font)
+        self.pbCam3.setCheckable(True)
         self.pbCam3.setObjectName(_fromUtf8("pbCam3"))
         self.gridLayout.addWidget(self.pbCam3, 2, 1, 1, 1)
         self.txtDesc3 = QtGui.QLineEdit(self.groupBox)
@@ -138,6 +141,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam4.setFont(font)
+        self.pbCam4.setCheckable(True)
         self.pbCam4.setObjectName(_fromUtf8("pbCam4"))
         self.gridLayout.addWidget(self.pbCam4, 3, 1, 1, 1)
         self.txtDesc4 = QtGui.QLineEdit(self.groupBox)
@@ -167,6 +171,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam5.setFont(font)
+        self.pbCam5.setCheckable(True)
         self.pbCam5.setObjectName(_fromUtf8("pbCam5"))
         self.gridLayout.addWidget(self.pbCam5, 4, 1, 1, 1)
         self.txtDesc5 = QtGui.QLineEdit(self.groupBox)
@@ -196,6 +201,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam6.setFont(font)
+        self.pbCam6.setCheckable(True)
         self.pbCam6.setObjectName(_fromUtf8("pbCam6"))
         self.gridLayout.addWidget(self.pbCam6, 5, 1, 1, 1)
         self.txtDesc6 = QtGui.QLineEdit(self.groupBox)
@@ -225,6 +231,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam7.setFont(font)
+        self.pbCam7.setCheckable(True)
         self.pbCam7.setObjectName(_fromUtf8("pbCam7"))
         self.gridLayout.addWidget(self.pbCam7, 6, 1, 1, 1)
         self.txtDesc7 = QtGui.QLineEdit(self.groupBox)
@@ -254,6 +261,7 @@ class Ui_CamDialog(object):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pbCam8.setFont(font)
+        self.pbCam8.setCheckable(True)
         self.pbCam8.setObjectName(_fromUtf8("pbCam8"))
         self.gridLayout.addWidget(self.pbCam8, 7, 1, 1, 1)
         self.txtDesc8 = QtGui.QLineEdit(self.groupBox)
