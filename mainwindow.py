@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import subprocess
+import shlex
 from datetime import datetime
 from PyQt4 import QtGui,QtCore
 from config import Config
@@ -12,12 +13,14 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
         self.setupUi(self)
         self.config = Config()
         self.updateFromConfig()
-        self.cmdHandles = [None] * 8
+        self.cmdRecHandles = [None] * 8
+        self.cmdViewHandles = [None] * 8
 
     def activateCamera(self, idCam):
         textCam = self.getCamDescription(idCam)
         cmd = self.config.action_cmd.format(idCam, textCam)
-        subprocess.Popen(cmd, shell=True)
+        cmd = shlex.split(cmd)
+        self.cmdViewHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
 
     def recordCamera(self, idCam, startRecording):
         if startRecording:
@@ -25,13 +28,17 @@ class MainWindow(QtGui.QDialog, uiCameras.Ui_CamDialog):
             fname = dt.strftime('%Y%m%d-%Hh%Mm%Ss')
             fname += '_{0}'.format(self.getCamDescription(idCam))
             cmd = self.config.record_cmd.format(
-                idCam, self.getCamDescription(idCam), fname
+                idCam,
+                self.getCamDescription(idCam),
+                fname
             )
-            self.cmdHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
+            cmd = shlex.split(cmd)
+            self.cmdRecHandles[idCam-1] = subprocess.Popen(cmd, shell=False)
         else:
-            handle = self.cmdHandles[idCam-1]
+            handle = self.cmdRecHandles[idCam-1]
             if not handle:
                 print "No handle found?!"
+                return
             print "sending terminate"
             handle.terminate()
 

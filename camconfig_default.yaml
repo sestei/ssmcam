@@ -1,0 +1,10 @@
+action_cmd: /usr/bin/gst-launch -e udpsrc port=540{0} ! application/x-rtp,payload=96,width=640,height=480
+  ! rtph264depay ! decodebin ! textoverlay text="{1}" ! clockoverlay ! xvimagesink
+  sync=false
+descriptions: [Camera 1, Camera 2, Camera 3, Camera 4, Camera 5, Camera 6, Camera
+    7, Camera 8]
+enabled: [true, false, false, false, false, false, false, false]
+record_cmd: /usr/bin/gst-launch -e udpsrc port=540{0} ! application/x-rtp,payload=96,width=640,height=480
+  ! rtph264depay ! decodebin ! clockoverlay ! tee name=t ! queue ! textoverlay text="RECORDING"
+  ! xvimagesink sync=false t. ! queue ! textoverlay text="{1}" ! ffenc_mpeg4 bitrate=1000000
+  interlaced=true ! avimux ! filesink location="/home/speedmeter/Desktop/{2}.avi"
