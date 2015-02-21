@@ -10,12 +10,10 @@ class Config(object):
             'Camera 2',
             'Camera 3',
             'Camera 4',
-            'Camera 5',
-            'Camera 6',
-            'Camera 7',
-            'Camera 8'
+            'Camera 5'
         ]
-        self.enabled = [False] * 8
+        self.enabled = [False] * 5
+        self.rotate = [False] * 5
         self.loadFromFile()
 
     def loadFromFile(self):
@@ -25,6 +23,7 @@ class Config(object):
             self.record_cmd = fc['record_cmd']
             self.descriptions = fc['descriptions']
             self.enabled = fc['enabled']
+            self.rotate = fc['rotate']
         except Exception, e:
             print("Error while reading configuration: {0}".format(str(e)))
 
@@ -35,7 +34,8 @@ class Config(object):
                     'view_cmd': self.view_cmd,
                     'record_cmd': self.record_cmd,
                     'descriptions': self.descriptions,
-                    'enabled': self.enabled
+                    'enabled': self.enabled,
+                    'rotate': self.rotate
                     }, fc)
         except Exception, e:
             print("Error while saving configuration: {0}".format(str(e)))  
